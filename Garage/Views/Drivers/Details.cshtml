@@ -1,0 +1,43 @@
+﻿@model DriverDetailsViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Driver</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Model.Name
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Age)
+        </dt>
+        <dd>
+            @Model.Age
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Cars)
+        </dt>
+        <dd>
+            <ul>
+                @foreach (Car car in Model.Cars)
+                {
+                    <li>
+                        @car.Manufacturer
+                    </li>
+                }
+            </ul>
+        </dd>
+    </dl>
+</div>
+<div>
+    @*<a asp-action="Edit" asp-route-id="@Model.DriverID">Edit</a>*@
+    <a asp-action="Index">Back to List</a>
+</div>

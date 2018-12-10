@@ -1,0 +1,35 @@
+﻿@model CarDetailsViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Car</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Manufacturer)
+        </dt>
+        <dd>
+            @Model.Manufacturer
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MOT)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MOT)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Driver)
+        </dt>
+        <dd>
+            @Model.Driver
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
