@@ -83,6 +83,27 @@ namespace Garage.Controllers
             return RedirectToAction("Index");
         }
 
+        public IActionResult Delete(int id)
+        {
+            Driver driver = driverRepository.GetDriverByID(id);
+            DriverDeleteViewModel model = new DriverDeleteViewModel
+            {
+                Name = driver.Name,
+                Age = driver.Age,
+                DriverID = driver.DriverID
+            };
+            return View(model);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteConfirmed(DriverDeleteViewModel model)
+        {
+            driverRepository.DeleteDriver(model.DriverID);
+            driverRepository.Save();
+            return RedirectToAction("Index");
+        }
+
         private bool DriverExists(int id)
         {
             return driverRepository.GetDrivers().Any(driver => driver.DriverID == id);
